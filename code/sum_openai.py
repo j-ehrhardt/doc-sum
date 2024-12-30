@@ -1,7 +1,5 @@
 import os
-import json
 import getpass
-import argparse
 
 from PyPDF2 import PdfReader
 from langchain_openai import ChatOpenAI
@@ -18,12 +16,12 @@ def pdf_to_string(file_path):
 
 ### string to llm ###
 
-def init_env():
+def init_env(model_name):
     if not os.environ.get('OPENAI_API_KEY'):
         os.environ['OPENAI_API_KEY'] = getpass.getuser('Enter API key for OpenAI:   ')
         # os.environ['OPENAI_API_SECRET'] = '<ENTER-YOUR-KEY-HERE>'
 
-    model = ChatOpenAI(model='gpt-4o-mini')
+    model = ChatOpenAI(model=model_name)
     return model
 
 
@@ -39,8 +37,8 @@ def query_model(system_prompt, user_prompt, model):
 
 ### iterate through corpus ###
 
-def crawl_pdfs(data_dir, system_prompt, user_prompt):
-    model = init_env()
+def crawl_pdfs(data_dir, system_prompt, user_prompt, model_name='gpt-4o-mini'):
+    model = init_env(model_name=model_name)
     doc_list = os.listdir(data_dir)
 
     answer_dict = {}
@@ -80,13 +78,17 @@ def summary_to_file(response, query_objective):
 
 
 if __name__ == '__main__':
-    query_objective = ''
+    # This string contains your main query objective that you want to compare the individual documents on
+    query_objective = '<ENTER-YOUR-QUERY-OBJECTIVE-HERE>'
 
+    # The system_prompt pre-prompts the GPT instance
     system_prompt = (f'You are a helpful assistant that helps me in crawling large pdf corpora, extracting information given the topics and questions you get asked. '
                      f'You do not hallucinate. You are precise, concise and base your summaries only on information you extracted from the documents.')
 
+    # This user prompt defines the task of extracting the information from the individual documents
     crawl_user_prompt = f'Summarize the main arguments of the given text under the following perspective {query_objective}.'
 
+    # This user prompt defines the task of summarizing the individual document excerpts
     sum_user_prompt = (f'You are given summaries of multiple documents. The summaries are separated by headlines which indicate the document title. '
                        f'Your task is to extract similarities from the individual summaries and point them out under the perspective of {query_objective}. '
                        f'Mark from which document summary you withdrew the information')
