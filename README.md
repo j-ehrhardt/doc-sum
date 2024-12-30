@@ -2,6 +2,7 @@
 <a href="https://mamba.readthedocs.io/en/latest/installation/mamba-installation.html"><img src="https://img.shields.io/badge/mamba-3.23-green" alt="mamba - 3.23"></a>
 <a href="LICENSE"><img src="https://img.shields.io/badge/License-MIT-blue" alt="License - MIT"></a>
 
+
 # doc-sum
 
 This repository contains a divide and conquer lang-chain script for summarizing large text-corpora with LLMs. 
@@ -22,11 +23,11 @@ The main dependency is the langchain library.
 
 # Usage
 
-> [WARNING]
+> [!WARNING]
 > This script only works, if you acquired tokens from OpenAI. Every use of the script will use tokens from your project's OpenAI account.
 
-1. Save the documents of your corpus as individual documents into the `data` directory.
-2. (If necessary: Adapt the model in the `sum_openai.py` file.)
+1. Install the mamba environment. 
+2. Save the documents of your corpus as individual documents into the `data` directory.
 
 You can run the script either from a jupyter notebook or from the command line. 
 
@@ -35,7 +36,7 @@ When running the script from the command line:
 3. Open your terminal and navigate to the `code` directory.
 4. activate your mamba environment and type: 
 ```bash
-python  main.py --query '<ENTER-YOUR-QUERY>'
+python  main.py --query '<YOUR-QUERY>'
 ```
 5. You can find your answer as separate file in the `responses` directory. The file is named after your query objective. 
 6. If you need help, type: 
