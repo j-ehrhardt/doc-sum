@@ -18,8 +18,8 @@ def pdf_to_string(file_path):
 
 def init_env(model_name):
     if not os.environ.get('OPENAI_API_KEY'):
-        os.environ['OPENAI_API_KEY'] = getpass.getuser('Enter API key for OpenAI:   ')
-        # os.environ['OPENAI_API_SECRET'] = '<ENTER-YOUR-KEY-HERE>'
+        #os.environ['OPENAI_API_KEY'] = getpass.getuser('Enter API key for OpenAI:   ')
+        os.environ['OPENAI_API_KEY'] = '<ENTER-YOUR-KEY-HERE>'
 
     model = ChatOpenAI(model=model_name)
     return model
@@ -46,7 +46,7 @@ def crawl_pdfs(data_dir, system_prompt, user_prompt, model_name='gpt-4o-mini'):
         if doc[-3:] == 'pdf':
             text = pdf_to_string(os.path.join(data_dir, doc))
             prompt = user_prompt + ' ' + text
-            response = query_model(system_prompt, user_prompt, model)
+            response = query_model(system_prompt, prompt, model)
 
             answer_dict[doc] = response
     return answer_dict, model
