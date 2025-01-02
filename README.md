@@ -6,7 +6,7 @@
 # doc-sum
 
 This repository contains a divide and conquer lang-chain script for summarizing large text-corpora with LLMs. 
-The script iteratively crawls through a directory of pdfs and feeds them into an instance of a GPT, along with a prompt including questions, topics, or search terms.
+The script iteratively crawls through a directory of pdfs and feeds them into an instance of a GPT along with a query objective which is defined by you.
 The resulting excerpts are buffered in a dictionary and finally summed in a response summary. 
 The response is saved in a separate file in the `response` directory. 
 
@@ -46,11 +46,11 @@ python main.py --help
  
 When running the script from the jupyter notebook: 
 
-5. Open your terminal and activate your mamba environment. 
-6. Start your jupyter server, adapt the information in the cells
-7. Adapt your queries in the query cells.
-8. Run your pipeline cell.
-9. You will get the answer as prompt below your cell. Additionally, your answer as separate file in the `responses` directory. The file is named after your query objective. 
+3. Open your terminal and activate your mamba environment. 
+4. Start your jupyter server, adapt the information in the cells
+5. Adapt your queries in the query cells.
+6. Run your pipeline cell.
+7. You will get the answer as prompt below your cell. Additionally, your answer as separate file in the `responses` directory. The file is named after your query objective. 
 
 
 # License
