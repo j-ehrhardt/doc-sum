@@ -31,7 +31,7 @@ The main dependency is the langchain library.
 
 You can run the script either from a jupyter notebook or from the command line. 
 
-When running the script from the command line:
+**When running the script from the command line:**
 
 3. Open your terminal and navigate to the `code` directory.
 4. activate your mamba environment and type: 
@@ -44,7 +44,7 @@ python  main.py --query '<YOUR-QUERY>'
 python main.py --help
 ```
  
-When running the script from the jupyter notebook: 
+**When running the script from the jupyter notebook:**
 
 3. Open your terminal and activate your mamba environment. 
 4. Start your jupyter server, adapt the information in the cells
